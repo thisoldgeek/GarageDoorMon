@@ -31,7 +31,7 @@ https://learn.adafruit.com/welcome-to-adafruit-io/client-library
 Also - review the MQTT documentation:
 https://learn.adafruit.com/welcome-to-adafruit-io/mqtt-api-documentation-2
 
-Bonus: Modified mosquitto.conf. Use this to set up brdiging from adafruit.io to a local MQTT broker. 
+Bonus: Modified mosquitto.conf. Use this to set up bridging from adafruit.io to a local MQTT broker. 
 This is useful if you already have a your own broker.
 
 
