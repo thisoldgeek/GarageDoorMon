@@ -1,5 +1,5 @@
 # **GarageDoorMon**
-
+![GarageDoorMon](https://github.com/thisoldgeek/miniz/blob/master/garagemon_animated_LED_Sign.gif"Garage Door Monitor")
  
 ## *Description:*
 An Adafruit Feather Huzzah that posts garage door open/closed status to adafruit.io.
