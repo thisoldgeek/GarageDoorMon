@@ -1,0 +1,15 @@
+# copy to /etc/systemd/system/gmon.service with sudo
+# chmod 644 /etc/systemd/system/gmon.service with sudo
+# sudo systemctl enable gmon
+
+[Unit]
+Description=Garage Door Monitor
+DefaultDependencies=no  #overrides default late start in boot process
+After=local-fs.target
+
+[Service]
+ExecStart=/home/pi/GarageDoorMon/garage_mon.py
+
+[Install]
+WantedBy=sysinit.target
+
