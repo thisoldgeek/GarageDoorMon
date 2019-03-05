@@ -16,7 +16,7 @@ This version uses MQTT subscribe directly from adafruit.io feed, via python clli
 
 See the posting at:
 
-thisoldgeek.blogspot.com Garage Door Monitor
+http://thisoldgeek.blogspot.com/2019/03/garage-door-monitor.html
 
 ## *Required Software:*
 Requires install of the library from: https://github.com/adafruit/Adafruit_Python_LED_Backpack
