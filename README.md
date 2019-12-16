@@ -47,3 +47,17 @@ This is useful if you already have your own broker.
 * Optional Adafruit Feather Huzzah 3D printed case; M2 screws (https://www.thingiverse.com/thing:2209964)
 * Optional Adafruit 3D printed case for raspberry pi zero W (https://www.thingiverse.com/thing:1165227)
 * Double-side foam tape to fasten alphanumeric display to raspberry pi case
+
+## UPDATE 12/15/2019:
+Added an optional buzzer on the display that beeps three times when OPEN state is first received.
+
+The new python script is named garage_mon_buzzer.py. Download this script and copy it like so:
+cd ~/GarageDoorMon
+sudo cp garage_mon_buzzer.py garage_mon.py 
+
+Use an active piezo buzzer, connect female-to-female jumpers:
+* +/positive (usually longer pin) to BCM pin 17
+* -/negative (shorter pin) to GND
+
+and restart the service:
+sudo systemctl restart gmon
