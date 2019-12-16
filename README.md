@@ -50,11 +50,13 @@ This is useful if you already have your own broker.
 
 ## UPDATE 12/15/2019:
 Added an optional buzzer on the display that beeps three times when OPEN state is first received.
+The buzzer will not sound during "quiet_time" set in the program, default to start 21:00, end 08:00
 
 The new python script is named garage_mon_buzzer.py. Download this script and copy it like so:
 
 cd ~/GarageDoorMon
 sudo cp garage_mon_buzzer.py garage_mon.py 
+Update your username and AIO Key after copying over to garage_mon.py
 
 Add the library:
 sudo apt-get install python-rpi.gpio python3-rpi.gpio 

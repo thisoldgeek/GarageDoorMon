@@ -7,6 +7,7 @@
 import random
 import sys
 import time
+import datetime
 import RPi.GPIO as GPIO
 
 #Select GPIO mode
@@ -35,21 +36,50 @@ myText =  "STRT"
 # Set to your Adafruit IO key.
 # Remember, your key is a secret,
 # so make sure not to publish it when you publish this code!
-ADAFRUIT_IO_KEY = 'e4d9513be9844250a68a213ca6d0b474'
-
+ADAFRUIT_IO_KEY = '********************************'
 # Set to your Adafruit IO username.
 # (go to https://accounts.adafruit.com to find your username)
-ADAFRUIT_IO_USERNAME = 'thisoldgeek'
+ADAFRUIT_IO_USERNAME = '**********'
+
+# Quiet Time: no alert actions will take place
+quiet_start = 21			# quiet time starts at this hour, using 24hr style
+quiet_end = 9				# quiet time ends at this hour
+
+# DO NOT CHANGE program variable default that follows: quiet_state
+# Program toggles to indicate if alerts will activate ("True") or be quiet ("False")
+# This assumes you are running this program BEFORE quiet_start time
+quiet_state = False
+
+def quiet_time():
+    #global quiet_start	# start time for quiet	
+    #global quiet_end	# end time for quiet
+    global quiet_state	# quiet True/False
+	
+    now = datetime.datetime.now()
+    print(now)
+    t = now.hour	# will be in 24hr format
+		
+    if quiet_state is False:
+        if t >= quiet_start:
+           quiet_state = True
+
+        if quiet_state is True and t <= 12:
+           if t >= quiet_end:
+              quiet_state = False 
+
+    return(quiet_state)
+
 
 def beep():
     global alert
     global buzzer
+
     for i in range(3):
         GPIO.output(buzzer,GPIO.HIGH)
-        print ("Beep")
+        #print ("Beep")
         time.sleep(0.5) # Delay in seconds
         GPIO.output(buzzer,GPIO.LOW)
-        print ("No Beep")
+        #print ("No Beep")
         time.sleep(0.5)
     alert = 0
 
@@ -121,10 +151,9 @@ while True:
         pos = 0
     if myText == "SHUT":
        alert = 1
-       print("SHUT text test")
     if myText == "OPEN" and alert == 1:
-       print("OPEN text test")
-       beep()
+       if quiet_time() == False:
+            beep()
     time.sleep(10)
 
 # Another option is to pump the message loop yourself by periodically calling
