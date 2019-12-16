@@ -52,8 +52,12 @@ This is useful if you already have your own broker.
 Added an optional buzzer on the display that beeps three times when OPEN state is first received.
 
 The new python script is named garage_mon_buzzer.py. Download this script and copy it like so:
+
 cd ~/GarageDoorMon
 sudo cp garage_mon_buzzer.py garage_mon.py 
+
+Add the library:
+sudo apt-get install python-rpi.gpio python3-rpi.gpio 
 
 Use an active piezo buzzer, connect female-to-female jumpers:
 * +/positive (usually longer pin) to BCM pin 17
